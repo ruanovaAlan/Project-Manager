@@ -9,7 +9,7 @@ function App() {
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined, // undefined, null, or a project id
     projects: [],
-    tasks: []
+    tasks: [],
   });
 
   function handleAddTask(text) {
@@ -87,7 +87,8 @@ function App() {
   const selectedProject = projectsState.projects.find(project => project.id === projectsState.selectedProjectId);
 
   let content = <SelectedProject project={selectedProject}
-    onDelete={handleDeleteProject} onAddTask={handleAddTask} onDeleteTask={handleDeleteTask} />;
+    onDelete={handleDeleteProject} onAddTask={handleAddTask}
+    onDeleteTask={handleDeleteTask} tasks={projectsState.tasks} />;
 
   if (projectsState.selectedProjectId === null) {
     content = <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject} />;
